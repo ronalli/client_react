@@ -4,6 +4,7 @@ import Home from './home';
 import MyNotes from './mynotes';
 import Favorites from './favorites';
 import Layout from '../components/Layout';
+import NotePage from './note';
 
 const configRouter = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const configRouter = createBrowserRouter([
       {
         path: 'favorites',
         element: <Favorites />,
+      },
+      {
+        path: 'note/:id',
+        element: <NotePage />,
       },
     ],
   },

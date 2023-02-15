@@ -5,6 +5,7 @@ import MyNotes from './mynotes';
 import Favorites from './favorites';
 import Layout from '../components/Layout';
 import NotePage from './note';
+import SignUp from './signup';
 
 const configRouter = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const configRouter = createBrowserRouter([
       {
         path: 'note/:id',
         element: <NotePage />,
+      },
+      {
+        path: 'signup',
+        element: <SignUp />,
       },
     ],
   },

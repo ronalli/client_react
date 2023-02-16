@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { gql, useMutation } from '@apollo/client';
+import { gql, useMutation, useApolloClient } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '../components/Button';
-
-const SIGNUP_USER = gql`
-  mutation signUp($email: String!, $username: String!, $password: String!) {
-    signUp(email: $email, username: $username, password: $password)
-  }
-`;
+import { IS_LOGGED_IN, SIGNUP_USER } from '../resolvers/mutation';
 
 const Wrapper = styled.div`
   border: 2px solid #f5f4f0;
@@ -31,6 +27,8 @@ const Form = styled.form`
 `;
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = 'Sign Up - Notedly';
   }, []);
@@ -44,9 +42,16 @@ const SignUp = () => {
     });
   };
 
+  const client = useApolloClient();
+
   const [signUp, { loading, error }] = useMutation(SIGNUP_USER, {
     onCompleted: (data) => {
-      console.log(data.signUp);
+      localStorage.setItem('token', data.signUp);
+      client.writeQuery({
+        query: IS_LOGGED_IN,
+        data: { isLoggedIn: true },
+      });
+      navigate('/');
     },
   });
 

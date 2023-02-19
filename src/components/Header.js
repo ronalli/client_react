@@ -1,10 +1,9 @@
-import { gql, useApolloClient, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../img/logo.svg';
-import { IS_LOGGED_IN } from '../resolvers/mutation';
-import { IS_LOGGED } from '../resolvers/query';
+import { IS_LOGGED_IN } from '../resolvers/query';
 import ButtonAsLink from './ButtonAsLink';
 
 const HeaderBar = styled.header`
@@ -29,7 +28,7 @@ const UserState = styled.div`
 `;
 
 const Header = () => {
-  const { data, client } = useQuery(IS_LOGGED);
+  const { data, client } = useQuery(IS_LOGGED_IN);
   const navigate = useNavigate();
 
   const logOut = () => {

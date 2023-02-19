@@ -1,10 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useMutation, useApolloClient } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 
 import UserForm from '../components/UserForm';
-import { IS_LOGGED_IN, SIGNIN_USER } from '../resolvers/mutation';
-import { useNavigate } from 'react-router-dom';
+import { SIGNIN_USER } from '../resolvers/mutation';
+import { IS_LOGGED_IN } from '../resolvers/query';
 
 const SignIn = () => {
   useEffect(() => {

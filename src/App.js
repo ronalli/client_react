@@ -4,13 +4,12 @@ import {
   ApolloProvider,
   InMemoryCache,
   HttpLink,
-  gql,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 import GlobalStyle from './components/GlobalStyle';
 import configRouter from './pages';
-import { IS_LOGGED_IN } from './resolvers/mutation';
+import { IS_LOGGED_IN } from './resolvers/query';
 
 const httpLink = new HttpLink({
   uri: process.env.REACT_APP_API_URI,

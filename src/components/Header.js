@@ -1,9 +1,11 @@
 import { gql, useApolloClient, useQuery } from '@apollo/client';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../img/logo.svg';
+import { IS_LOGGED_IN } from '../resolvers/mutation';
 import { IS_LOGGED } from '../resolvers/query';
+import ButtonAsLink from './ButtonAsLink';
 
 const HeaderBar = styled.header`
   width: 100%;
@@ -27,15 +29,26 @@ const UserState = styled.div`
 `;
 
 const Header = () => {
-  const { data } = useQuery(IS_LOGGED);
+  const { data, client } = useQuery(IS_LOGGED);
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    localStorage.removeItem('token');
+    client.resetStore();
+    client.writeQuery({
+      query: IS_LOGGED_IN,
+      data: { isLoggedIn: false },
+    });
+    navigate('/');
+  };
 
   return (
     <HeaderBar>
       <img src={logo} alt="Notedly logo" height="40" />
       <LogoText>Notedly</LogoText>
       <UserState>
-        {data.isLoggedIn ? (
-          <p>Log out</p>
+        {data?.isLoggedIn ? (
+          <ButtonAsLink onClick={logOut}>Logout</ButtonAsLink>
         ) : (
           <p>
             <Link to={'/signin'}>Sign In</Link> or{' '}

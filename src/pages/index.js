@@ -6,6 +6,7 @@ import Favorites from './favorites';
 import Layout from '../components/Layout';
 import NotePage from './note';
 import SignUp from './signup';
+import SignIn from './signin';
 
 const configRouter = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const configRouter = createBrowserRouter([
       {
         path: 'signup',
         element: <SignUp />,
+      },
+      {
+        path: 'signin',
+        element: <SignIn />,
       },
     ],
   },

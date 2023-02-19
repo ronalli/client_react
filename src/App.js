@@ -44,6 +44,8 @@ cache.writeQuery({
   data,
 });
 
+client.onResetStore(() => cache.writeQuery({ query: IS_LOGGED_IN, data }));
+
 const App = () => {
   return (
     <ApolloProvider client={client}>

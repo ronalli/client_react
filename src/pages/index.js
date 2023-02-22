@@ -9,6 +9,7 @@ import SignUp from './signup';
 import SignIn from './signin';
 import PrivateRouter from '../util/PrivateRouter';
 import NewNote from './new';
+import EditNote from './edit';
 
 const configRouter = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const configRouter = createBrowserRouter([
       {
         path: 'new',
         element: <PrivateRouter Component={NewNote} />,
+      },
+      {
+        path: 'edit/:id',
+        element: <PrivateRouter Component={EditNote} />,
       },
     ],
   },

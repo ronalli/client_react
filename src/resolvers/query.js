@@ -1,5 +1,16 @@
 import { gql } from '@apollo/client';
 
+const GET_ME = gql`
+  query me {
+    me {
+      id
+      favorites {
+        id
+      }
+    }
+  }
+`;
+
 const GET_MY_FAVORITES = gql`
   query me {
     me {
@@ -24,7 +35,6 @@ const GET_MY_NOTES = gql`
   query me {
     me {
       id
-      username
       notes {
         id
         createdAt
@@ -82,4 +92,11 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
-export { GET_NOTES, IS_LOGGED_IN, GET_NOTE, GET_MY_NOTES, GET_MY_FAVORITES };
+export {
+  GET_NOTES,
+  IS_LOGGED_IN,
+  GET_NOTE,
+  GET_MY_NOTES,
+  GET_MY_FAVORITES,
+  GET_ME,
+};

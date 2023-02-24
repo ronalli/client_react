@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { GET_ME } from '../resolvers/query';
+import DeleteNote from './DeleteNote';
 
 const NoteUser = ({ note }) => {
   const { loading, error, data } = useQuery(GET_ME);
@@ -16,6 +17,8 @@ const NoteUser = ({ note }) => {
       {data.me.id === note.author.id && (
         <>
           <Link to={`/edit/${note.id}`}>Edit</Link>
+          <br />
+          <DeleteNote noteId={note.id} />
         </>
       )}
     </>

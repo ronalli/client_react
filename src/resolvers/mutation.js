@@ -1,5 +1,11 @@
 import { gql } from '@apollo/client';
 
+const DELETE_NOTE = gql`
+  mutation deleteNote($id: ID!) {
+    deleteNote(id: $id)
+  }
+`;
+
 const EDIT_NOTE = gql`
   mutation updatenote($id: ID!, $content: String!) {
     updateNote(id: $id, content: $content) {
@@ -48,4 +54,4 @@ export const NEW_NOTE = gql`
   }
 `;
 
-export { EDIT_NOTE };
+export { EDIT_NOTE, DELETE_NOTE };

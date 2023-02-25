@@ -2,9 +2,9 @@
   "name": "client_react",
   "version": "0.1.0",
   "private": true,
-  "main": "src/index.js",
   "dependencies": {
     "@apollo/client": "^3.7.7",
+    "@swc/helpers": "^0.4.14",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -20,10 +20,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-		 "dev": "parcel public/index.html",
+    "dev": "parcel public/index.html",
     "final": "parcel final/index.html",
-    "deploy:src": "parcel build src/index.html --public-url ./",
-    "deploy:final": "parcel build src/index.html --public-url ./",
+    "deploy:src": "parcel build public/index.html --public-url ./",
+    "deploy:final": "parcel build public/index.html --public-url ./",
     "cy:run": "cypress run",
     "cy:open": "cypress open"
   },
